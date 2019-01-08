@@ -43,7 +43,9 @@
       "plugin:vue/essential",
       "@vue/standard"
     ],
-    "rules": {},
+    "rules": {
+      "no-multi-spaces": ["error", {"ignoreEOLComments": true}]
+    },
     "parserOptions": {
       "parser": "babel-eslint"
     }
