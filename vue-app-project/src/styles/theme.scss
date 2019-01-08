@@ -1,4 +1,4 @@
-@import './variable.scss';
+@import './variables.scss';
 // 白色主题  默认的主题
 // 分隔线
 .split-line {
@@ -47,8 +47,6 @@
     background: $whiteBg;
     .header-box{
       background: #b51e1f;
-      .input-box{
-      }
     }
   .tab-box .tab-item.active {
     color: $error!important;

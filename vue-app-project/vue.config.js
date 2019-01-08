@@ -1,6 +1,19 @@
+const vuxLoader = require('vux-loader')
+
+module.exports = {
+  configureWebpack: config => {
+    vuxLoader.merge(config, {
+      devServer: {
+        open: true
+      },
+      plugins: ['vux-ui', 'duplicate-style']
+    })
+  }
+}
 // 这是用户根据自己的配置新建的
 // indexPath Default: 'index.html'
 // pages 多页面 详情请关注文档
+/*
 module.exports = {
   baseUrl: './', // 指定打包输出路径
   outputDir: 'dist', // 指定打包输出路径
@@ -32,3 +45,4 @@ module.exports = {
     open: 'Google Chrome'
   }
 }
+*/
