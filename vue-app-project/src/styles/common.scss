@@ -1,0 +1,70 @@
+@import'./variable.scss';
+html,body,#root{
+  font-family: Arial, Helvetica, sans-serif;
+}
+*{
+  margin: 0;
+  padding: 0;
+}
+// 刚进入页面的loading
+#root{
+  .loading-wrapper-box{
+    position: fixed;
+    overflow: hidden;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    .loading-icon{
+      position: absolute;
+      width: 36px;
+      height: 36px;
+      left:50%;
+      top:50%;
+      margin-top:-18px;
+      margin-left:-18px;
+    }
+  }
+}
+#root .loading-icon{
+  position: absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  margin:auto;
+  width: 36px;
+  height: 36px;
+}
+
+.home-warpper {
+  font-size: Px(30);
+  line-height: 1.3;
+}
+ // 底部边框
+.bot-border{
+  border-bottom: 1px solid $whiteBd;
+}
+.top-border{
+  border-top: 1px solid $whiteBd;
+}
+// swiper 点的公共样式
+.swiper-pagination .swiper-pagination-bullet {
+  width: 4px !important;
+  height: 4px !important;
+  border-radius: 50% !important;
+  background-color: initial !important;
+  border: 1px solid #fff !important;
+  margin-right: 0.1448rem !important;
+  margin-left: 0px !important;
+  opacity: 1 !important;
+}
+.swiper-pagination .swiper-pagination-bullet-active {
+  background-color: #fff !important;
+}
+.swiper-pagination {
+  bottom: 8px !important;
+  z-index: 2;
+  line-height: 0.213rem;
+  transform: translate3d(0px, 0px, 1px) scale(1);
+}

@@ -1,0 +1,60 @@
+@import './variable.scss';
+// 白色主题  默认的主题
+// 分隔线
+.split-line {
+  background: $whiteDivision;
+  height: Px(18);
+}
+// 底部边框
+.bot-border{
+  border-bottom: 1px solid $whiteBd;
+}
+.top-border{
+  border-top: 1px solid $whiteBd;
+}
+.white{
+  background: $whiteBg;
+  color:$blackText;
+  .header-box{
+    background: #1C2B48;
+  }
+}
+// 黑色主题
+.black{
+  background: $blackBg;
+  color: $whiteText;
+  //  头部
+  .header-box{
+    background: #202528;
+    .input-box{
+    }
+  }
+  // 分隔线
+  .split-line {
+    background: $blackDivision;
+    height: Px(18);
+  }
+  // 底部边框
+  .bot-border{
+    border-bottom: 1px solid $blackBd;
+  }
+  .top-border{
+    border-top: 1px solid $blackBd;
+  }
+}
+
+.red {
+    background: $whiteBg;
+    .header-box{
+      background: #b51e1f;
+      .input-box{
+      }
+    }
+  .tab-box .tab-item.active {
+    color: $error!important;
+  }
+  .tab-box .tab-item.active .line{
+    border-color: $error!important;
+  }
+}
+
