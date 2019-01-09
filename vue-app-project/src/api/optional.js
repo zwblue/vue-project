@@ -12,7 +12,7 @@ export function getOptionalNews (data = {}) {
     url: '/OptionalStockNews',
     method: 'post',
     'Content-Type': 'application/json;charset=utf-8', // TYPE=2
-    data: data,
+    data: data
 
   })
 }
@@ -22,7 +22,7 @@ export function getOptionalNotices (data = {}) {
     baseURL: OPTIONAL_URL,
     url: '/OptionalStockAnn',
     method: 'post',
-    data: data,
+    data: data
 
   })
 }
@@ -32,7 +32,7 @@ export function getOptionalBigEvent (data = {}) {
     baseURL: OPTIONAL_URL,
     url: '/OptionalStockBigNews',
     method: 'post',
-    data: data,
+    data: data
 
   })
 }
@@ -41,7 +41,7 @@ export function getOptionalReports (data = {}) {
     baseURL: OPTIONAL_URL,
     url: '/OptionalStockResearchReport',
     method: 'post',
-    data: data,
+    data: data
 
   })
 }
@@ -50,7 +50,7 @@ export function getOptionalQuestions (data = {}) {
     baseURL: OPTIONAL_URL,
     url: '/OptionalStockSearch',
     method: 'post',
-    data: data,
+    data: data
 
   })
 }

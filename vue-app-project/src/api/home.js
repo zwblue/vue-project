@@ -9,7 +9,7 @@ export function getIconData (data = {}) {
     baseURL: HOME_URL,
     url: '/iconPictures',
     method: 'get',
-    params: data,
+    params: data
   })
 }
 
@@ -18,6 +18,6 @@ export function getHomeData (data = {}) {
     baseURL: HOME_URL,
     url: '/frontPage',
     method: 'get',
-    params: data,
+    params: data
   })
 }

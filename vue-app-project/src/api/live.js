@@ -10,7 +10,7 @@ export function getALiveData (data = {}) {
     baseURL: LIVE_URL,
     url: '/AStocksInfo',
     method: 'get',
-    params: data,
+    params: data
 
   })
 }
@@ -20,7 +20,7 @@ export function getAllLiveData (data = {}) {
     baseURL: LIVE_URL,
     url: '/GlobalLiveNews',
     method: 'get',
-    params: data,
+    params: data
 
   })
 }

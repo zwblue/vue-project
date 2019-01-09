@@ -1,41 +1,33 @@
-import { UPDATE_CONFIG } from '../../constants/ActionType'
 import commitType from './actions'
-console.log(111, commitType)
-const state = {
-  lastHashId: ''
-}
+import {
+  getTopLineData,
+  getZhiDinData
+} from '../../api/topLine'
+import {
+  getStore,
+  setStore
+} from '../../utils/common'
 
-const mutations = {
-  [UPDATE_CONFIG] (state, payload) {
-    state = { ...state, ...payload }
-  }
-}
 const actions = {
   async getTopLineList ({ commit, state, rootState }, payload) {
-    const htid = rootState.config.htid
+    const htid = rootState.config.htid || 'fsfsdfsdfsfafsa'
     const listData = rootState.list.listData
-    const lastHashId = state.lastHashId
     const interfaceParams = rootState.list.interfaceParams
     const loadedState = rootState.fetch.topLine
     const { type } = payload
-    commitType.updateLoadedState(commit, { topLine: true })
-    // commit(`fetch/${UPDATE_LOADED_STATE}`, { topLine: true }, { root: true })
     try {
       if (type === 'init') {
         if (loadedState) return
-        commit(updateLoadedState({
-          topLine: true
-        }))
-        // 缓存没有时，也要将其设为空数组
+        commitType.updateLoadedState(commit, { topLine: true })
         if (!getStore('topLineHistory.data')) {
           setStore('topLineHistory.data', [])
         }
-        // 头条入参
         const topLineParams = {
           userID: htid,
           count: 10,
-          version: '3.1',
+          version: '3.1'
         }
+        // 头条
         const {
           data
         } = await getTopLineData(topLineParams)
@@ -50,12 +42,9 @@ const actions = {
           }
           setStore('topLineHistory.data', historyArray)
         }
-         
-        // 置顶接口
-        // 入参
         const stickParams = {
           userID: htid,
-          lastHashId: lastHashId,
+          lastHashId: '',
           version: '3.1'
         }
         const {
@@ -65,49 +54,32 @@ const actions = {
         setStore('topLineHistory.stickData', [])
         if (stickData.Status === 200) {
           setStore('topLineHistory.stickData', stickData.TopNews)
-          // stockParams = {
-          //   ...stockParams, ...{
-          //     lastHashId: stickData.HashId
-          //   }
-          // }
         }
         // 合并头条与置顶
-        const topList = getStore('topLineHistory.data')
-        const stockList = getStore('topLineHistory.stickData')
-        const stockTopList = [...stockList, ...topList]
-        dispatch(updateLoadedState({
-          topLine: false
-        }))
+        const stockTopList = [...getStore('topLineHistory.data'), ...getStore('topLineHistory.stickData')]
+        commitType.updateLoadedState(commit, { topLine: false })
         // 如果之间其他接口返回了，就不执行这个接口返回的任何逻辑
-        const whichLoading = getState().list.interfaceState.whichLoading
-        if (whichLoading !== 'topLine') return
-
-        // 缓存头条加上置顶的都没有数据就为空
+        const whichLoading = rootState.list.interfaceState.whichLoading
+        // if (whichLoading !== 'topLine') return
         if (stockTopList.length === 0) {
-          dispatch(updateDataState({
-            isNoData: true
-          }))
+          commitType.updateDataState(commit, { isNoData: true })
         } else {
           // 取前10条数据
-          dispatch(updateListData({
+          commitType.updateListData(commit, {
             listData: stockTopList.slice(0, interfaceParams.pageSize)
-          }))
+          })
         }
        
         // 加载完成
-        dispatch(updateLoadingState({
+        commitType.updateLoadingState(commit, {
           initLoading: false,
           refreshLoading: false
-        }))
+        })
         // 判断是否没有更多的数据了
         if (stockTopList.length <= interfaceParams.pageNum * interfaceParams.pageSize) {
-          dispatch(updateDataState({
-            isNoMoreData: true
-          }))
+          commitType.updateDataState(commit, { isNoMoreData: true })
         }
-        dispatch(updateInterfaceParams({
-          pageNum: interfaceParams.pageNum + 1
-        }))
+        commitType.updateInterfaceParams(commit, { pageNum: interfaceParams.pageNum + 1 })
       } else {
         await new Promise((resolve, reject) => {
           setTimeout(() => {
@@ -119,12 +91,10 @@ const actions = {
           pageSize: interfaceParams.pageSize
         }
         // 如果之间其他接口返回了，就不执行这个接口返回的任何逻辑
-        const whichLoading = getState().list.interfaceState.whichLoading
+        const whichLoading = rootState.list.interfaceState.whichLoading
         if (whichLoading !== 'topLine') return
         // 合并头条与置顶
-        const topList = getStore('topLineHistory.data')
-        const stockList = getStore('topLineHistory.stickData')
-        const stockTopList = [...stockList, ...topList]
+        const stockTopList = [...getStore('topLineHistory.data'), ...getStore('topLineHistory.stickData')]
         const returnData = stockTopList.slice(params.pageNum * params.pageSize, (params.pageNum + 1) * params.pageSize) // 缓存的数据
         const {
           data
@@ -136,44 +106,37 @@ const actions = {
         }
         // 判断是否没有更多的数据了
         if (stockTopList.length <= interfaceParams.pageNum * interfaceParams.pageSize) {
-          dispatch(updateDataState({
-            isNoMoreData: true
-          }))
+          commitType.updateDataState(commit, { isNoMoreData: true })
         }
         // 叠加数据
-        dispatch(updateListData({
+        commitType.updateListData(commit, {
           listData: [...listData, ...data.data]
-        }))
-
+        })
         // 加载完成
-        dispatch(updateLoadingState({
-          loadLoading: false,
-        }))
-        console.log(interfaceParams.pageNum)
-        dispatch(updateInterfaceParams({
+        commitType.updateLoadedState(commit, {
+          loadLoading: false
+        })
+        commitType.updateInterfaceParams(commit, {
           pageNum: interfaceParams.pageNum + 1
-        }))
+        })
       }
     } catch (error) {
-      dispatch(updateLoadingState({
+      commitType.updateInterfaceParams(commit, {
         loadLoading: false,
         initLoading: false,
         refreshLoading: false
-      }))
-      dispatch(updateLoadedState({
+      })
+      commitType.updateInterfaceParams(commit, {
         topLine: false
-      }))
-      dispatch(updateInterfaceState({
+      })
+      commitType.updateInterfaceParams(commit, {
         whichLoadedFail: 'topLine'
-      }))
-     
+      })
     }
   }
 }
 export default {
   namespaced: true,
-  state,
-  mutations,
   actions,
   getters: {}
 }

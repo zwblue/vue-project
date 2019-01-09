@@ -1,16 +1,22 @@
 <template>
   <div class="home">
-    Home主页 
-    <div>
+    Home主页
+    <div class="list" v-for="(item,index) in listData" :key="index">
+      <div>
+        {{item.Title}}
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import {mapState, mapActions} from 'vuex'
+import { mapState, mapActions } from 'vuex'
 export default {
+  computed: {
+    ...mapState('list', { listData: 'listData' })
+  },
   mounted () {
-    this.getTopLineList({type: 'init'})
+    this.getTopLineList({ type: 'init' })
   },
   methods: {
     ...mapActions('topLine', ['getTopLineList'])
@@ -19,7 +25,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .home{
-    display: flex;
-  }
 </style>

@@ -1,11 +1,12 @@
 const vuxLoader = require('vux-loader')
 
 module.exports = {
+  devServer: {
+    port: '8088', // default: 8080
+    open: true
+  },
   configureWebpack: config => {
     vuxLoader.merge(config, {
-      devServer: {
-        open: true
-      },
       plugins: ['vux-ui', 'duplicate-style']
     })
   }

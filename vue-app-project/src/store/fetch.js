@@ -16,15 +16,6 @@ const mutations = {
     console.log(state, payload)
   }
 }
-// const actions = {
-//   async GET_LIVE_DATA ({
-//     state,
-//     commit,
-//     rootState
-//   }, params) {
-//   }
-// }
-
 export default {
   namespaced: true,
   state,

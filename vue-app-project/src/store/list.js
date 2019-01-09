@@ -48,7 +48,7 @@ const mutations = {
   },
   // 更新列表数据
   [UPDATE_LIST_DATA] (state, payload) {
-    state.listData = payload
+    state.listData = payload.listData
   },
   // 重置list状态
   [RESET_STATE] (state) {

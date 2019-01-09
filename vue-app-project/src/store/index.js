@@ -8,19 +8,9 @@ import config from './config'
 import list from './list'
 import tab from './tab'
 import topLine from './tab/topLine'
-
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-  state: {
-
-  },
-  mutations: {
-
-  },
-  actions: {
-
-  },
   modules: {
     native, fetch, config, list, tab, topLine
   }

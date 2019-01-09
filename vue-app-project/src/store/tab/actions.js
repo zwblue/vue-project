@@ -10,9 +10,31 @@ import {
   UPDATE_TAB_INDEX
 } from '../../constants/ActionType'
 
+const moduleName = ['fetch', 'config', 'list']
+
 const updateLoadedState = (commit, params) => {
-  return commit(`fetch/${UPDATE_LOADED_STATE}`, params, { root: true })
+  return commit(`${moduleName[0]}/${UPDATE_LOADED_STATE}`, params, { root: true })
+}
+const updateDataState = (commit, params) => {
+  return commit(`${moduleName[2]}/${UPDATE_DATA_STATE}`, params, { root: true })
+}
+const updateListData = (commit, params) => {
+  return commit(`${moduleName[2]}/${UPDATE_LIST_DATA}`, params, { root: true })
+}
+const updateLoadingState = (commit, params) => {
+  return commit(`${moduleName[2]}/${UPDATE_LOADING_STATE}`, params, { root: true })
+}
+const updateInterfaceParams = (commit, params) => {
+  return commit(`${moduleName[2]}/${UPDATE_INTERFACE_PARAMS}`, params, { root: true })
+}
+const updateInterfaceState = (commit, params) => {
+  return commit(`${moduleName[2]}/${UPDATE_INTERFACE_STATE}`, params, { root: true })
 }
 export default {
-  updateLoadedState
+  updateLoadedState,
+  updateDataState,
+  updateListData,
+  updateLoadingState,
+  updateInterfaceState,
+  updateInterfaceParams
 }

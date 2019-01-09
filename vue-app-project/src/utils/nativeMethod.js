@@ -1,6 +1,5 @@
+// import {updateNativeData} from '../store/tab/actions'
 export default (store) => {
-  console.log(store)
-  return
   window.updateLinster = function(market) {
     if (market) {
       store.commit(updateNativeData({

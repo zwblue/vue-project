@@ -9,6 +9,6 @@ export function getCheifData (data = {}) {
     baseURL: HOME_URL,
     url: '/newsList',
     method: 'get',
-    params: data,
+    params: data
   })
 }

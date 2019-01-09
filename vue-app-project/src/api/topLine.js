@@ -10,7 +10,7 @@ export function getTopLineData (data = {}) {
     baseURL: TOPLINE_URL,
     url: '/Articles',
     method: 'get',
-    params: data,
+    params: data
 
   })
 }
@@ -20,7 +20,7 @@ export function getZhiDinData (data = {}) {
     baseURL: TOPLINE_URL,
     url: '/TopArticles',
     method: 'get',
-    params: data,
+    params: data
 
   })
 }

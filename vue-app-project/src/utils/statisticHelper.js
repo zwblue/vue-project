@@ -69,6 +69,6 @@ const statisticData = {
   'optional1': { 'name': '切换到自选-问董秘', 'clickKey': '51753', 'clickType': 'CAction' },
   'optional2': { 'name': '切换到自选-大事件', 'clickKey': '51754', 'clickType': 'CAction' },
   'optional3': { 'name': '切换到自选-公告', 'clickKey': '51755', 'clickType': 'CAction' },
-  'optional4': { 'name': '切换到自选-研报', 'clickKey': '51756', 'clickType': 'CAction' },
+  'optional4': { 'name': '切换到自选-研报', 'clickKey': '51756', 'clickType': 'CAction' }
 }
 export default statisticData

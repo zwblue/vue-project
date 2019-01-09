@@ -12,7 +12,7 @@ export function getDateData (data = {}) {
     baseURL: RINI_URL,
     url: '/MarketPerformanceCount',
     method: 'get',
-    params: data,
+    params: data
 
   })
 }
@@ -34,7 +34,7 @@ export function getSelectStockData (data = {}) {
     baseURL: MARKET_MACHINE_URL,
     url: '/SmartStock/getStockSelect',
     method: 'get',
-    params: data,
+    params: data
 
   })
 }
@@ -44,7 +44,7 @@ export function getHardenData (data = {}) {
     baseURL: MARKET_MACHINE_URL,
     url: '/Analysis/harden',
     method: 'get',
-    params: data,
+    params: data
 
   })
 }
