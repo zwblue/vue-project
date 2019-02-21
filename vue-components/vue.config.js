@@ -1,17 +1,17 @@
+// vue.config.js 会自动被vueCli3中的某个应用程序执行
 module.exports = {
   baseUrl: './', // 指定打包输出路径
   devServer: {
-    port: '8088',
     open: true
   },
   css: {
     sourceMap: false, // 打包css-map文件  default: true
     loaderOptions: {
       sass: {
-        data: `@import "@/styles/variables.scss";`
-      },
-    },
-  },
+        data: `@import "@/styles/variables.scss"; @import "@/styles/minxin.scss";`
+      }
+    }
+  }
 }
 
 // 这是用户根据自己的配置新建的

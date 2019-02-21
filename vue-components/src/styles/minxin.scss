@@ -1,0 +1,9 @@
+@mixin rowflex($row: space-between,$col: center) {
+  display: flex;
+  justify-content: $row;
+  align-items: $col;
+}
+@mixin bg($url) {
+  background-image: url($url);
+  background-size: 100% 100%;
+}
