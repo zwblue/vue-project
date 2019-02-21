@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="blue-divider">
     section
   </div>
 </template>

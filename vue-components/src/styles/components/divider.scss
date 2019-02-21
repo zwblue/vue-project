@@ -1,0 +1,4 @@
+$divider-prefix-cls: #{$css-prefix+"divider"};
+.#{$divider-prefix-cls} {
+  color: #000;
+}

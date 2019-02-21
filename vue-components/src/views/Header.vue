@@ -5,17 +5,35 @@
       <div class="name">
         知识存储系统
       </div>
+      <Divider type='col'>
+      </Divider>
     </div>
-    <div class="menu"></div>
-    <div class="personal"></div>
+    <Input/>
+    <div class="menu">
+      <div class="menu-item" v-for="item in menuData" :key="item.key">
+        {{ item.title }}
+      </div>
+    </div>
+    <div class="personal">
+      <div>主题</div>
+      <div>登录</div>
+    </div>
   </div>
 </template>
 
 <script>
+import Input from '@/components/input'
+import Divider from '@/components/divider'
 export default {
+  components: {
+    Input, Divider
+  },
   data () {
     return {
-      knowLogo: require('../images/know.png')
+      menuData: [
+        { title: 'App组件', key: 'app' },
+        { title: 'pc组件', key: 'pc' }
+      ]
     }
   }
 }
@@ -31,13 +49,27 @@ export default {
   .lf-header{
      @include rowflex();
      .name{
-       margin-left: 10px;
+       margin-left: $margin-base;
      }
+     .logo{
+      width: 42px;
+      height: 42px;
+      @include bg('../images/know.png')
+    }
   }
-  .logo{
-    width: 42px;
-    height: 42px;
-    @include bg('../images/know.png')
+  .menu{
+    @include rowflex();
+    .menu-item{
+      margin: 0 $margin-base;
+      &:hover{
+        color: $primary-color;
+        cursor: pointer;
+      }
+    }
+  }
+  .personal{
+    @include rowflex();
+
   }
 }
 </style>
