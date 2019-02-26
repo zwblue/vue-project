@@ -1,7 +1,7 @@
 <template>
   <div class="input-box">
     <input :class="classes"
-      :placeholder="placeholder" :style='{width: `${width}px`, paddingLeft: "32px"}'
+      :placeholder="placeholder"
     >
   </div>
 </template>
@@ -21,6 +21,13 @@ export default {
     icon: {
       type: String,
       default: ''
+    },
+    iconPosition: {
+      type: String,
+      default: 'left',
+      validator: (value) => {
+        return ['left', 'right'].indexOf(value) !== -1
+      }
     },
     placeholder: {
       type: String,
@@ -47,7 +54,8 @@ export default {
       return [
         `${prefixCls}-${this.size}`,
         prefixCls,
-        { [`${prefixCls}-with-icon`]: this.icon && this.type === 'search' }
+        { [`${prefixCls}-with-left-icon`]: this.icon && this.iconPosition === 'left' },
+        { [`${prefixCls}-with-right-icon`]: (this.icon && this.iconPosition === 'right') || this.type === 'search' }
       ]
     }
   }
@@ -62,6 +70,7 @@ export default {
   }
 
   .#{$prefixCls}{
+    width: 200px;
     border: 1px solid $border-color-base;
     color: $input-color;
     cursor: text;
@@ -97,7 +106,10 @@ export default {
     padding: $input-padding-vertical-small  $input-padding-horizontal;
     border-radius: $border-radius-small;
   }
-  .#{$prefixCls + '-with-icon'}{
+  .#{$prefixCls + '-with-left-icon'}{
     padding-left: 32px;
+  }
+  .#{$prefixCls + '-with-right-icon'}{
+    padding-right: 32px;
   }
 </style>
