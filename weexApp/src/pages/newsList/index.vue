@@ -18,7 +18,7 @@
       return {
         listData: {},
         lastTimeStamp: 0,
-        loadingIsShow: true
+        loadingIsShow: false
       }
     },
     mounted () {
@@ -26,6 +26,7 @@
     },
     methods: {
       async getListData (callback) {
+        this.loadingIsShow = true
         const {data} = await request(getnews24List,
           {
             pageSize: 10,
@@ -34,12 +35,11 @@
           }
         )
         this.listData = data
-        console.log('index233')
         const arr = data.Data
         const field = data.Field
         const index = field.findIndex(item => item === 'displaytime')
         this.lastTimeStamp = arr[arr.length - 1][index]
-        console.log(this.lastTimeStamp)
+        this.loadingIsShow = false
         callback()
       },
       async loadMoreListData () {
@@ -52,7 +52,6 @@
         )
         this.listData.Data.push(...data.Data)
         this.loadingIsShow = false
-        console.log(3333, this.listData.Data, data.Data, this.listData.Data.length)
       }
     },
     async onPullDownRefresh () {
@@ -64,6 +63,7 @@
     // 上拉加载，拉到底部触发
     onReachBottom () {
       // 到这底部在这里需要做什么事情
+      if (this.loadingIsShow) return
       this.loadingIsShow = true
       this.loadMoreListData()
     }

@@ -1,5 +1,5 @@
 <template>
-  <div v-if='isShow' class="loading-box">
+  <div v-show='isShow' class="loading-box">
      <image src="../../static/images/home/default.gif" class="image-box"></image> 加载中...
   </div>
 </template>
