@@ -1,51 +1,59 @@
 {
   "pages": [
     "pages/index/main",
-    "pages/logs/main",
-    "pages/counter/main"
+    "pages/optional/main",
+    "pages/market/main",
+    "pages/user/main",
+    "pages/info/main",
+    "pages/search/main",
+    "pages/stock/main",
+    "pages/newsList/main"
   ],
   "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "black"
+    "navigationBarBackgroundColor": "#263442",
+    "navigationBarTitleText": "e海通财",
+    "backgroundColor": "#111c24",
+    "navigationBarTextStyle": "white",
+    "enablePullDownRefresh": true
   },
   "tabBar": {
-    "color": "#999",
-    "backgroundColor": "#fafafa",
-    "selectedColor": "#333",
-    "borderStyle": "white",
+    "selectedColor": "#426188",
+    "color": "#929292",
+    "backgroundColor": "#1d2833",
     "list": [
       {
-        "pagePath": "pages/index",
+        "pagePath": "pages/index/main",
         "text": "首页",
         "iconPath": "static/tabs/tab_index.png",
         "selectedIconPath": "static/tabs/tab_index_on.png"
       },
       {
-        "pagePath": "pages/optional",
+        "pagePath": "pages/optional/main",
         "text": "自选",
         "iconPath": "static/tabs/tab_optional.png",
         "selectedIconPath": "static/tabs/tab_optional_on.png"
       },
       {
-        "pagePath": "pages/market",
+        "pagePath": "pages/market/main",
         "text": "行情",
         "iconPath": "static/tabs/tab_market.png",
         "selectedIconPath": "static/tabs/tab_market_on.png"
       },
       {
-        "pagePath": "pages/info",
+        "pagePath": "pages/info/main",
         "text": "资讯",
         "iconPath": "static/tabs/tab_info.png",
         "selectedIconPath": "static/tabs/tab_info_on.png"
       },
       {
-        "pagePath": "pages/user",
+        "pagePath": "pages/user/main",
         "text": "我的",
         "iconPath": "static/tabs/tab_user.png",
         "selectedIconPath": "static/tabs/tab_user_on.png"
       }
     ]
+  },
+  "networkTimeout": {
+    "request": 3000
   }
 }

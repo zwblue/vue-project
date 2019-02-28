@@ -1,6 +1,6 @@
 <template>
   <div>
-    optional
+    searchPage
   </div>
 </template>
 
