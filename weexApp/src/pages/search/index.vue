@@ -9,20 +9,18 @@
     </div>
   </div>
   <div class="list-box">
-    <div v-if='handledSearchResultArray.length'>
-      <div class="item-box bot-bd" v-for="(item,index) in handledSearchResultArray" :key="index">
-        <div class="lf-area">
-          <div class="item-name">{{item.stockName}}</div>
-          <div class="item-code">{{item.stockCode}}</div>
-        </div>
-        <div class="rt-area">
-          <div v-show='item.showBtn'>已添加</div>
-          <div v-show='!item.showBtn' class="add-icon" @click="addStockCodeToStorage(item.stockCode)"></div>
-        </div>
+    <div class="item-box bot-bd" v-for="(item,index) in handledSearchResultArray" :key="index">
+      <div class="lf-area">
+        <div class="item-name">{{item.stockName}}</div>
+        <div class="item-code">{{item.stockCode}}</div>
+      </div>
+      <div class="rt-area">
+        <div v-show='item.showBtn'>已添加</div>
+        <div v-show='!item.showBtn' class="add-icon" @click="addStockCodeToStorage(item.stockCode)"></div>
       </div>
     </div>
-    <div v-else>
-      没有搜索到相关的股票
+    <div v-show='showTips' class="no-data">
+      没有搜索到相关股票
     </div>
   </div>
 </div>
@@ -45,6 +43,10 @@
       }
     },
     computed: {
+      // 是否展示没有搜索到更多内容
+      showTips () {
+        return !this.searchResultArray.length && this.inputValue
+      },
       // 由于mpvue中不能在html中对数据进行处理，只能先处理好数据再渲染
       handledSearchResultArray () {
         return this.searchResultArray.map((item, index) => {
@@ -56,7 +58,9 @@
     },
     watch: {
       inputValue (newValue, oldValue) {
-        this.changeInputValue(newValue)
+        if (newValue) {
+          this.changeInputValue(newValue)
+        }
       }
     },
     methods: {
@@ -144,12 +148,9 @@
   margin-left: 10rpx;
 }
 
-.list-box{
-
-}
 .item-box{
   display: flex;
-  padding: 5px 10px;
+  padding: 5px 20px;
   justify-content: space-between;
   align-items: center;
 }
@@ -171,5 +172,10 @@
   background: url('./search_add_zxg.png');
   background-size: 100% 100%;
 }
-
+.no-data{
+  margin-top: 20px;
+  color: #d0d0d0;
+  text-align: center;
+  font-size: 30rpx;
+}
 </style>
