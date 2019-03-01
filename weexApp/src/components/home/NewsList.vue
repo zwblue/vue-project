@@ -32,7 +32,6 @@
     },
     computed: {
       handledListData () {
-        console.log(444444444444, this.listData)
         if ('Data' in this.listData) {
           const newListData = parseData(this.listData)
           // 循环处理时间
@@ -53,10 +52,10 @@
         return item.title + img
       },
       preview (src, e) {
-        console.log(111, src)
+        console.log('图片全屏的路径', src)
       },
       navigate (href, e) {
-        console.log(111, href)
+        console.log('链接的路径', href)
       }
     }
   }

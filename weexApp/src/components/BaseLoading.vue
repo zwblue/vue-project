@@ -1,15 +1,15 @@
 <template>
-  <div v-show='isShow' class="loading-box">
-     <image src="../../static/images/home/default.gif" class="image-box"></image> 加载中...
+  <div class="loading-box">
+     <image src="../../static/images/home/default.gif" class="image-box"></image> {{tip}}
   </div>
 </template>
 
 <script>
   export default {
     props: {
-      isShow: {
-        type: Boolean,
-        default: true
+      tip: {
+        type: String,
+        default: '加载中...'
       }
     },
     data () {

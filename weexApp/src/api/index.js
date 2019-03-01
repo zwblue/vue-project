@@ -5,6 +5,8 @@ export const marketIndex = BASE_URL + 'marketIndex'
 export const getnews24List = BASE_URL + 'api/AStocksInfo'
 // 搜索
 export const searchStock = BASE_URL + 'stock/searchStock'
+// 资讯列表
+export const getStockInfo = BASE_URL + 'api/htsecResearch'
 // 自选股数据
 export const optionStock = BASE_URL + 'quote/zxgList'
 // 行情数据

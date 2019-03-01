@@ -1,6 +1,6 @@
 <template>
 <div>
-  <div class="search-box" @click="onStockSearchEvent">
+  <div class="search-box">
     <div class="search-button">
       <div class="search-icon"></div>
       <!-- <div class="search-text">请输入股票代码/简拼</div> -->
@@ -9,7 +9,8 @@
     </div>
   </div>
   <div class="list-box">
-    <div class="item-box bot-bd" v-for="(item,index) in handledSearchResultArray" :key="index">
+    <!-- @click="goToDetailsPage(item)" -->
+    <div class="item-box bot-bd"  v-for="(item,index) in handledSearchResultArray" :key="index">
       <div class="lf-area">
         <div class="item-name">{{item.stockName}}</div>
         <div class="item-code">{{item.stockCode}}</div>

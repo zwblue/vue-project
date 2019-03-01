@@ -7,7 +7,7 @@
 
 <script>
   import NewsList from '@/components/home/NewsList'
-  import BaseLoading from '@/components/home/BaseLoading'
+  import BaseLoading from '@/components/BaseLoading'
   import request, { getnews24List } from '@/api'
   export default {
     components: {
