@@ -66,6 +66,7 @@
   margin: 0;
 }
 .wxParse{
+  /* 默认的parse.css是#666，首页资讯的字体是#d0d0d0 */
   font-size: 30rpx;
   color:#d0d0d0;
   line-height: 24px;

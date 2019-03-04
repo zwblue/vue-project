@@ -1,5 +1,5 @@
 <template>
-  <div class="no-data">
+  <div class="no-data" :style='{color}'>
     {{tip}}
   </div>
 </template>
@@ -10,6 +10,10 @@
       tip: {
         type: String,
         default: '没有更多的数据了...'
+      },
+      color: {
+        type: String,
+        default: '#d0d0d0'
       }
     }
   }

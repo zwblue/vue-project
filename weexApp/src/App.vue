@@ -8,10 +8,10 @@ export default {
 <style>
 @import url('./style/common.css');
 page{
+  font-family: Lucida Grande,'Microsoft YaHei',"Lucida Grande","Lucida Sans Unicode",Helvetica,Arial,Verdana,sans-serif;
   background:#111c24;
 }
 .container{
-    font-family: Lucida Grande,'Microsoft YaHei',"Lucida Grande","Lucida Sans Unicode",Helvetica,Arial,Verdana,sans-serif;
     height: 100%;
     font-size: 26rpx;
     position: fixed;

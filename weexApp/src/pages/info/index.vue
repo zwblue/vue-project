@@ -48,6 +48,7 @@
     },
     methods: {
       async getListData (callback) {
+        // 刚开始的加载状态
         wx.showLoading({
           title: '加载中'
         })
@@ -60,18 +61,19 @@
               TypeCode: 0
             }
           )
-          console.log('infoData', data, this.listState)
           this.listData = data.JsonList
           // 没有更多的数据时
           if (this.page.pageNum * this.page.pageSize >= data.TotalCount) {
             this.listState = {...initListState, noData: true}
           }
-          // 页数加1
           wx.hideLoading()
-          if (callback) { callback() }
+          // 上拉刷新时，应该在接口加载完成后stop下
+          if (callback && typeof (callback) === 'function') { callback() }
         } catch (error) {
+          // 报错时，
+          // 1、重新加载，
+          // 2、隐藏加载中的loading框，
           wx.hideLoading()
-          console.log(error)
           this.listState = {...initListState, reLoad: true}
         }
       },
@@ -97,15 +99,17 @@
         }
       }
     },
+    // 上拉刷新
     async onPullDownRefresh () {
-      // to doing..
+      // 列表清空
+      // 重新调接口并回调
       this.listData = []
       this.getListData(() => { wx.stopPullDownRefresh() })
       // 停止下拉刷新
     },
     // 上拉加载，拉到底部触发
     onReachBottom () {
-      // 到这底部在这里需要做什么事情
+      // 正在加载中，与没有更多数据时，不做任何请求
       if (this.listState.loading || this.listState.noData) return
       this.listState = {...initListState, loading: true}
       this.loadMoreListData()

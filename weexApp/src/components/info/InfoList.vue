@@ -1,6 +1,6 @@
 <template>
   <div class='list-box'>
-    <div class="bot-bd item-box" v-for='(item, index) in listData' :key='index'>
+    <div class="bot-bd item-box" @click="jumpToPage(item)" v-for='(item, index) in listData' :key='index'>
       <div class="title">
         {{item.Title}}
       </div>
@@ -26,13 +26,19 @@
       }
     },
     methods: {
+      jumpToPage (item) {
+        console.log(item.Id, item.LinkUrl)
+        wx.navigateTo({
+          url: `/pages/targetInfoDetail/main?types=totalInfo&id=${item.Id || ''}&url=${item.LinkUrl || ''}`
+        })
+      }
     }
   }
 </script>
 
 <style scoped>
 .list-box{
-  color:#8e99ac;
+  color:#727b8a;
   padding:0 8px;
   font-size: 30rpx;
 }
