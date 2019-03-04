@@ -2,7 +2,7 @@
 <div class="list-box">
   <InfoList :listData='listData'></InfoList>
   <BaseLoading v-if='listState.loading'></BaseLoading>
-  <BaseNoData v-if='listState.noData' tip='没有更多的数据了'></BaseNoData>
+  <BaseNoData v-if='listState.noData' tip='没有更多的数据了...'></BaseNoData>
   <BaseReload v-if='listState.reLoad' @reloadEvent='getListData' tip='加载失败点击重试'></BaseReload>
 </div>
 </template>
@@ -63,13 +63,14 @@
           console.log('infoData', data, this.listState)
           this.listData = data.JsonList
           // 没有更多的数据时
-          if (this.page.pageNum * this.page.pageSize >= 20) {
+          if (this.page.pageNum * this.page.pageSize >= data.TotalCount) {
             this.listState = {...initListState, noData: true}
           }
           // 页数加1
           wx.hideLoading()
           if (callback) { callback() }
         } catch (error) {
+          wx.hideLoading()
           console.log(error)
           this.listState = {...initListState, reLoad: true}
         }
@@ -85,7 +86,7 @@
             }
           )
           this.listData.push(...data.JsonList)
-          if (this.page.pageNum * this.page.pageSize >= 20) {
+          if (this.page.pageNum * this.page.pageSize >= data.TotalCount) {
             console.log()
             this.listState = {...initListState, noData: true}
           } else {
