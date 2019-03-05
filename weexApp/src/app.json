@@ -8,7 +8,8 @@
     "pages/search/main",
     "pages/stock/main",
     "pages/newsList/main",
-    "pages/targetInfoDetail/main"
+    "pages/targetInfoDetail/main",
+    "pages/updateLog/main"
   ],
   "window": {
     "navigationBarBackgroundColor": "#263442",

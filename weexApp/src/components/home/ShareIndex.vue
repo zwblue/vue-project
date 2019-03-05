@@ -41,7 +41,25 @@
           console.log('newShareIndexData', newShareIndexData)
           return newShareIndexData
         } else {
-          return []
+          return [{
+            goodsName: '上证指数',
+            goodCode: 'SH000001',
+            currentPrice: '--',
+            increase: '--',
+            rise: '--'
+          }, {
+            goodsName: '深证成指',
+            goodCode: 'SZ39901',
+            currentPrice: '--',
+            increase: '--',
+            rise: '--'
+          }, {
+            goodsName: '创业板指',
+            goodCode: 'SZ39906',
+            currentPrice: '--',
+            increase: '--',
+            rise: '--'
+          }]
         }
       }
     },
