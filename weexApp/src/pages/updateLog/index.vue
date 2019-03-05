@@ -1,5 +1,6 @@
 <template>
   <div class="log-box">
+    <div class="newest">最新版本</div>
     <div v-for="(item, index) in logList" :key="item.id">
       <div class="title">
         <div class="lf">
@@ -88,6 +89,12 @@
 .log-box{
   color:#d0d0d0;
   font-size:30rpx;
+}
+.newest{
+  background: #152630;
+  color:#4c81b9;
+  padding: 10px 15px;
+  padding-bottom: 0;
 }
 .title{
   display: flex;

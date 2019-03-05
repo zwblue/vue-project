@@ -17,25 +17,35 @@
     data () {
       return {
         animation: null,
-        animationData: null
+        animationData: null,
+        timer: 1500
       }
     },
+    mounted () {
+    },
+    onHide () {
+      console.log('重新返回这个页面了')
+      this.rotatePoint(0, 0)
+    },
     methods: {
-      jumpToPage () {
-        // 旋转动画
-        const timer = 1500
+      rotatePoint (timer, deg) {
         const animation = wx.createAnimation({
           duration: timer,
           timingFunction: 'ease'
         })
-        animation.rotate(1440).step()
+        animation.export()
+        animation.rotate(deg).step()
         this.animationData = animation.export()
-
+      },
+      jumpToPage () {
+        // 旋转动画
+        this.rotatePoint(this.timer, 1440)
         setTimeout(() => {
           wx.navigateTo({
             url: `/pages/updateLog/main`
           })
-        }, timer + 1)
+          // 小程序中返回时并没有将数据重置，所以手动将其归0，否则将会出现不转的情况
+        }, this.timer)
       }
     }
   }
