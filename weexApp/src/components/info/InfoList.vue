@@ -29,7 +29,7 @@
       jumpToPage (item) {
         console.log(item.Id, item.LinkUrl)
         wx.navigateTo({
-          url: `/pages/targetInfoDetail/main?types=totalInfo&id=${item.Id || ''}&url=${item.LinkUrl || ''}`
+          url: `/pages/infoDetail/main?types=totalInfo&id=${item.Id || ''}&url=${item.LinkUrl || ''}`
         })
       }
     }

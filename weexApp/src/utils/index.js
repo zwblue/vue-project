@@ -36,14 +36,23 @@ export function parseTime (time, cFormat = '{y}-{m}-{d} {h}:{i}:{s}') {
 }
 
 // 数据格式化
-export function parseData (listData, dataKey = 'Data', fieldKey = 'Field') {
+export function parseData (listData, dataKey = 'Data', fieldKey = 'Field', needKey = []) {
   const newListData = []
   const data = listData[dataKey]
   const field = listData[fieldKey]
   data.forEach((element, eleIndex) => {
     const obj = {}
     element.forEach((item, index) => {
-      obj[field[index]] = item
+      const keyValue = field[index]
+      if (needKey && needKey.length > 0) {
+        // 只转换需要的key值
+        if (needKey.indexOf(keyValue) >= 0) {
+          obj[keyValue] = item
+        }
+      } else {
+        // 全部对应的key都转换过来
+        obj[keyValue] = item
+      }
     })
     newListData[eleIndex] = obj
   })

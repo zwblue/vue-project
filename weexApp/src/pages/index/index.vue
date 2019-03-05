@@ -2,6 +2,7 @@
   <div class="container">
     <SearchEntry></SearchEntry>
     <BaseMenu></BaseMenu>
+    <divider class="divider"></divider>
     <ShareIndex :shareIndexData='shareIndexData'></ShareIndex>
     <NewsLive></NewsLive>
     <NewsList :listData='listData'></NewsList>
@@ -17,7 +18,6 @@
   import NewsLive from '@/components/home/NewsLive.vue'
   import NewsList from '@/components/home/NewsList.vue'
   import SearchEntry from '@/components/home/SearchEntry.vue'
-
   import request, { getnews24List, marketIndex } from '@/api'
   export default {
     components: {
@@ -58,4 +58,9 @@
 </script>
 
 <style scoped>
+.divider{
+  height: 6px;
+  display: block;
+  width: 100%;
+}
 </style>

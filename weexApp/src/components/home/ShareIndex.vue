@@ -25,7 +25,9 @@
     computed: {
       newShareIndexData () {
         if ('data' in this.shareIndexData) {
-          const ShareIndexData = parseData(this.shareIndexData, 'data', 'field')
+          // 需要的值对应的key数组
+          const needKey = ['goodsName', 'goodsCode', 'currentPrice', 'increase', 'rise']
+          const ShareIndexData = parseData(this.shareIndexData, 'data', 'field', needKey)
           const newShareIndexData = ShareIndexData.map(element => {
             var obj = {}
             this.dataFormat.forEach((item, index) => {
@@ -82,7 +84,6 @@
 
 <style scoped>
   .share-box{
-    margin-top: 6px;
     width: 100%;
     background: #111c24;
     display: flex;
@@ -101,11 +102,12 @@
   .line{
     position: absolute;  
     height: 60%;
-    border-right: 3rpx solid #000;
+    border-right: 3rpx solid #203846;
     right: 0;
   }
   .share-number{
     font-size: 40rpx;
+    font-weight: bold;
   }
   .share-content{
     display: flex; 

@@ -1,14 +1,20 @@
 {
   "pages": [
     "pages/index/main",
-    "pages/optional/main",
-    "pages/market/main",
-    "pages/user/main",
-    "pages/info/main",
-    "pages/search/main",
-    "pages/stock/main",
+    
     "pages/newsList/main",
-    "pages/targetInfoDetail/main",
+    "pages/search/main",
+
+    "pages/optional/main",
+    "pages/optionalEdit/main",
+
+    "pages/info/main",
+    "pages/infoDetail/main",
+
+    "pages/market/main",
+    "pages/stock/main",
+
+    "pages/user/main",
     "pages/updateLog/main"
   ],
   "window": {
