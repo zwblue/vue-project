@@ -4,6 +4,19 @@
 .green{
   color: #00b07c;
 }
+.gray{
+  color: #8e8e8e;
+}
+.red-bg{
+  background:#a84532;
+}
+.green-bg{
+  background: #007955;
+}
+.gray-bg{
+  background:#5e6674;
+}
+
 .top-bd{
   border-top:1px solid #172530;
 }
