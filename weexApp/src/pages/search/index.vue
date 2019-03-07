@@ -40,8 +40,11 @@
         // 当前搜索结果的列表数据
         searchResultArray: [],
         // 缓存保存的已添加的数据
-        addedStockCodeArray: wx.getStorageSync('addedStockCodeArray') || []
+        addedStockCodeArray: []
       }
+    },
+    onShow () {
+      this.addedStockCodeArray = wx.getStorageSync('addedStockCodeArray')
     },
     computed: {
       // 是否展示没有搜索到更多内容
