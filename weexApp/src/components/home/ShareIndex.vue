@@ -26,7 +26,7 @@
       newShareIndexData () {
         if ('data' in this.shareIndexData) {
           // 需要的值对应的key数组
-          const needKey = ['goodsName', 'goodsCode', 'currentPrice', 'increase', 'rise']
+          const needKey = ['goodsName', 'goodsCode', 'lastPrice', 'currentPrice', 'increase', 'rise']
           const ShareIndexData = parseData(this.shareIndexData, 'data', 'field', needKey)
           const newShareIndexData = ShareIndexData.map(element => {
             var obj = {}
